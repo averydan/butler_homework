@@ -3,13 +3,15 @@ from flask_pymongo import PyMongo
 import scrape_mars as sm
 app = Flask(__name__)
 mongo = PyMongo(app, uri="mongodb://localhost:27017/mars")
-
+name = 'doug vann'
 @app.route("/")
 def home():
         mars_data = mongo.db.collection.find_one()
         if mars_data == None:
             return render_template("index.html", mars=sm.blank_data)
         else:
+            print('~~~~~~~~~LOOK HERE~~~~~~~~~~~~')
+            print(mars_data['nasa_news'])
             return render_template("index.html", mars=mars_data)
 @app.route("/scrape")
 def scrape():

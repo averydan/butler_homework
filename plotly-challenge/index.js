@@ -2,7 +2,7 @@ let idSelect = d3.select("#selDataset")
 let demographicsTable = d3.select("#sample-metadata")
 
 function plotGraphs(id) {
-    d3.json("./samples.json").then((data => {
+    d3.json("./data/samples.json").then((data => {
         if (id == null) {
             data.names.forEach((name => {
                 let option = idSelect.append("option");
